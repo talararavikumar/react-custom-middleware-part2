@@ -1,6 +1,10 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducer from "./reducer";
 import loggingmiddleware from "./loggingmiddleware";
+const createStoreWithMiddleware = applyMiddleware(loggingmiddleware)(
+  createStore
+);
 
-const store = createStore(reducer, loggingmiddleware);
+const store = createStoreWithMiddleware(reducer);
+
 export default store;

@@ -4,5 +4,9 @@ import store from "./store/store";
 import PhotoContainer from "./pages/PhotoContainer.js";
 
 export default function App() {
-  return <PhotoContainer />;
+  return (
+    <Provider store={store}>
+      <PhotoContainer />
+    </Provider>
+  );
 }

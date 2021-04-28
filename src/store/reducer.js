@@ -1,14 +1,14 @@
 const initialState = {
-  photos: [],
-  loading: false
+  photos: [{ title: "one" }],
+  isLoading: false
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "PHOTOS_LOADING":
-      return { ...state, loading: true };
+      return { ...state, isLoading: true };
     case "PHOTOS_LOADED":
-      return { ...state, photos: action.payload };
+      return { ...state, photos: action.payload, isLoading: false };
     default:
       return state;
   }

@@ -1,7 +1,9 @@
-const Photos = () => {
+import PhotoContainer from "./PhotoContainer";
+
+const Photos = (props) => {
   return (
     <>
-      {this.props.photos.map((photo) => (
+      {props.photos.map((photo) => (
         <div>{photo.title}</div>
       ))}
     </>
