@@ -1,17 +1,17 @@
 import WithLoading from "./PhotosWrapper";
 import photos from "./photos";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { getPhotos } from "../store/actions";
 import { useState } from "react";
 
 const PhotoWrapper = WithLoading(photos);
 
 function PhotoContainer(props) {
-  const { isLoading, photos, loadPhotos } = props;
+  const { isLoading, photos } = useSelector((state) => state);
   console.log(`isLoading : ${isLoading} photos: ${photos}`);
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   function getPhotosFromDB() {
-    loadPhotos();
+    dispatch(getPhotos());
   }
   // const [isLoading, setLoading] = useState(true);
   // const [photos, setPhotos] = useState([]);
@@ -24,15 +24,15 @@ function PhotoContainer(props) {
   );
 }
 
-// export default PhotoContainer;
+export default PhotoContainer;
 
-const mapStatetoProps = (state) => ({
-  isLoading: state.isLoading,
-  photos: state.photos
-});
+// const mapStatetoProps = (state) => ({
+//   isLoading: state.isLoading,
+//   photos: state.photos
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  loadPhotos: (photos) => dispatch(getPhotos())
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   loadPhotos: (photos) => dispatch(getPhotos())
+// });
 
-export default connect(mapStatetoProps, mapDispatchToProps)(PhotoContainer);
+// export default connect(mapStatetoProps, mapDispatchToProps)(PhotoContainer);
