@@ -9,9 +9,9 @@ const PhotoWrapper = WithLoading(photos);
 function PhotoContainer(props) {
   const { isLoading, photos, loadPhotos } = props;
   console.log(`isLoading : ${isLoading} photos: ${photos}`);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   function getPhotosFromDB() {
-    dispatch(getPhotos([]));
+    loadPhotos();
   }
   // const [isLoading, setLoading] = useState(true);
   // const [photos, setPhotos] = useState([]);
@@ -32,7 +32,7 @@ const mapStatetoProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadPhotos: (photos) => dispatch(getPhotos(photos))
+  loadPhotos: (photos) => dispatch(getPhotos())
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(PhotoContainer);

@@ -4,7 +4,7 @@ const Photos = (props) => {
   return (
     <>
       {props.photos.map((photo) => (
-        <div>{photo.title}</div>
+        <div key={photo.title}>{photo.title}</div>
       ))}
     </>
   );
