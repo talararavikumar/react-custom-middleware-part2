@@ -1,5 +1,5 @@
 const initialState = {
-  photos: [{ title: "one" }],
+  photos: [],
   isLoading: false
 };
 

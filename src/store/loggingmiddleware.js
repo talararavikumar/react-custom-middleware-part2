@@ -3,6 +3,15 @@ const loggingmiddleware = (state) => (next) => (action) => {
   console.log("previous state " + state);
   next(action);
   console.log("new state" + state);
+
+  switch(action.type){
+    case 'PHOTOS_LOADING':
+      fetch('https://jsonplaceholder.typicode.com/photos').then(res => res.json()).then(photos => state.dispatch({type:'PHOTOS_LOADED', payload:photos}))
+      next(action);
+    break;
+    default:
+      next(action);
+  }
   //setTimeout(()=>{state.dispatch({ type: "PHOTOS_LOADED", payload: [] })}, 3000)
 };
 
